@@ -4,6 +4,7 @@ var theImageContainer = document.querySelector('#theImageContainer');
 var theErrorMessage = document.querySelector('#errorMessage');
 var theSuccessMessage = document.querySelector('#successMessage');
 var theClearImageLink = document.querySelector('#clearImage');
+var imageLabel = document.querySelector('#imageLabel')
 
 var fileName = "";
 
@@ -31,7 +32,9 @@ var fileName = "";
     })
 });
 
-
+theImageContainer.addEventListener('click', function(e) {
+    theImageField.click()
+})
 
 theImageContainer.addEventListener('drop', function (e) {
     if(e.dataTransfer.files.length > 1) {
@@ -67,7 +70,7 @@ function checkFileProperties(theFile) {
         return false;
     }
 
-    if (theFile.size > 500000) {
+    if (theFile.size > 5000000) {
         console.log('File too large');
         theErrorMessage.innerHTML = "File too large, cannot be more than 500KB...";
         theErrorMessage.classList.remove('hide');
@@ -113,6 +116,7 @@ function handleUploadedFile(file) {
     img.setAttribute('id', 'theImageTag');
     img.file = file;
     theImageContainer.appendChild(img);
+    imageLabel.classList.add('hide');
     
     var reader = new FileReader();
     reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
@@ -133,4 +137,5 @@ function clearImage(e) {
 
     theErrorMessage.classList.add('hide');
     theSuccessMessage.classList.add('hide');
+    imageLabel.classList.remove('hide');
 }
