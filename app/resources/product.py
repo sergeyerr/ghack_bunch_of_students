@@ -2,6 +2,8 @@ import json
 from flask_restful import Resource, reqparse
 from flask import render_template, make_response
 import werkzeug
+from app.models import line_ocr_result, ocr_result
+from app.services import OCRService, StringSearchService
 from models import ProductModel
 
 
@@ -22,8 +24,16 @@ class Product(Resource):
         image_file = args['file']
 
         self.logger.info('Running OCR..')
-        items = []  # TODO: Run OCR
-        self.logger.info(f'Found items: {items}')
+        ocr_results = OCRService.get_ocr_results(image_file)
+        full = ocr_results[0]
+        y = full.bounding_box.boundary.xy[1]
+        full_height = max(y) - min(y)
+        line_ocrs = line_ocr_result.group_ocr_results(ocr_results[1:], full_height)
+        self.logger.info(f'Found items!')
+        
+        for line in line_ocrs:
+            top5_articles = StringSearchService.get_most_likely_articles(line.description)
+
         products = []  # TODO: Run DB Query
 
         return json.dumps([product.__dict__ for product in products]), 204
