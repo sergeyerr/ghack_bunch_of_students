@@ -5,29 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Image upload demo</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='js/client.js') }}">
-    <link rel="stylesheet" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <title>Food Print</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href= "styles/style.css">
 </head>
 
 <body class="container">
-    <h1>Image upload demo</h1>
+    <h1>Food Print</h1>
 
-    <form id="theImageForm">
-        <label for="theImageField" id="theImageContainer">
-            <input type="file" id="theImageField" accept="image/png, image/jpeg">
-            Click here to upload or <b>drag-and-drop</b> an image...
-        </label>
-        <p id="errorMessage" class="hide"></p>
-        <p id="successMessage" class="hide"></p>
-        <button class="btn btn-lg btn-primary" type="submit">Upload</button>
-        <a href="" id="clearImage">Clear</a>
-    </form>
+    <div class="col s12 m7">
+        
+        <div class="card horizontal">
+        <div class="card-image">
+            <form id="theImageForm">
+                <div id="theImageContainer">
+                    <input type="file" id="theImageField" accept="image/png, image/jpeg">
+                    <label id="imageLabel">Click here to upload or <b>drag-and-drop</b> an image...</label>
+                </div>
+                <p id="errorMessage" class="hide"></p>
+                <p id="successMessage" class="hide"></p>
+                <a class="waves-effect waves-light btn-large" id="clearImage">Clear</a>
+            </form>
+        </div>
+        <div class="card-stacked">
+            <div class="card-content">
+            <p>Carbon emmission data placeholder</p>
+            </div>
+            <div class="card-action">
+            <a href="https://denstoreklimadatabase.dk/en" target="_blank">Dataset</a>
+            </div>
+        </div>
+        </div>
+    </div>
 
-
-    <script src="/libs/jquery/dist/jquery.min.js"></script>
-    <script src="/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="client.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/js/client.js"></script>
 </body>
 
 </html>
