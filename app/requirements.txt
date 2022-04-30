@@ -12,4 +12,4 @@ google-cloud-vision==2.7.2
 shapely==1.8.1
 levenshtein==0.18.1 
 fuzzywuzzy==0.18.0
-google-cloud==0.34.0
+google-cloud-bigquery==3.0.1
