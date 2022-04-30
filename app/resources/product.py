@@ -2,10 +2,8 @@ import json
 from flask_restful import Resource, reqparse
 from flask import render_template, make_response
 import werkzeug
-from models import line_ocr_result, ocr_result
+from models import line_ocr_result
 from services import OCRService, StringSearchService
-from models import ProductModel
-
 
 class Product(Resource):
     parser = reqparse.RequestParser()
