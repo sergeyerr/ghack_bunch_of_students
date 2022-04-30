@@ -7,25 +7,30 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+    margin: 20px;
 }
 
 #theImageContainer {
-    height: 300px;
-    width: 300px;
+    display: flex;
+    height: 500px;
+    width: 500px;
     border: 3px dashed darkgray;
     background-color: #fafafa;
     font-family: "Calibri";
     font-size: 30px;
     text-align: center;
     vertical-align: middle;
-    padding-top: 100px;
+    align-items: center;
     color: darkgrey;
     cursor: pointer;
-    border-radius: 50%;
+    border-radius: 5%;
     margin-bottom: 25px;
     position: relative;
     overflow: hidden;
+}
+
+#imageLabel{
+    font-size: x-large;
 }
 
 #theImageField {
@@ -47,11 +52,8 @@ h1 {
 }
 
 #theImageTag {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    width: 110%;
-    transform: translateX(-50%);
+    height: 100%;
+    width: 100%;
 }
 
 .hide {
