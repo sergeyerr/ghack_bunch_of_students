@@ -28,12 +28,10 @@ class Product(Resource):
         full_height = max(y) - min(y)
         line_ocrs = LineOCRResult.group_ocr_results(ocr_results[1:], full_height)
         self.logger.info(f'Found items!')
+        top5_articles = StringSearchService.get_most_likely_articles(list(map(lambda l: l.expected_article_description, line_ocrs)))
+        results = []
 
-        return "success"
-        
-        for line in line_ocrs:
-            top5_articles = StringSearchService.get_most_likely_articles(line.description)
+        for line, top5 in zip(line_ocrs, top5_articles):
+            results.append((line.full_description, top5))
 
-        products = []  # TODO: Run DB Query
-
-        return json.dumps([product.__dict__ for product in products])
+        return json.dumps([{"line": r[0], "top_products": {p[1]: p[0] for p in r[1]}} for r in results])
