@@ -36,4 +36,4 @@ class Product(Resource):
 
         products = []  # TODO: Run DB Query
 
-        return json.dumps([product.__dict__ for product in products]), 204
+        return json.dumps([product.__dict__ for product in products])
