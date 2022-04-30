@@ -28,6 +28,7 @@ class Product(Resource):
         full_height = max(y) - min(y)
         line_ocrs = LineOCRResult.group_ocr_results(ocr_results[1:], full_height)
         self.logger.info(f'Found items!')
+        return StringSearchService.get_most_likely_articles(list(map(lambda l: l.expected_article_description, line_ocrs)))
         top5_articles = StringSearchService.get_most_likely_articles(list(map(lambda l: l.expected_article_description, line_ocrs)))
         results = []
 
