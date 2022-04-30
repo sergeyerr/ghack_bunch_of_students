@@ -1,4 +1,4 @@
-class ProductModel:
+class Product:
     def __init__(self, name, category, agriculture, iluc, food_processing, packaging, transport, retail, total, energy,
                  fat, carbs, protein):
         self.name = name
