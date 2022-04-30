@@ -2,9 +2,8 @@ import json
 from flask_restful import Resource, reqparse
 from flask import render_template, make_response
 import werkzeug
-from app.models import line_ocr_result, ocr_result
-from app.services import OCRService, StringSearchService
-from models import ProductModel
+from models import line_ocr_result
+from services import OCRService, StringSearchService
 
 
 class Product(Resource):
@@ -31,9 +30,7 @@ class Product(Resource):
         line_ocrs = line_ocr_result.group_ocr_results(ocr_results[1:], full_height)
         self.logger.info(f'Found items!')
         
-        for line in line_ocrs:
-            top5_articles = StringSearchService.get_most_likely_articles(line.description)
-
+        top5_articles = StringSearchService.get_most_likely_articles(list(map(lambda l: l.expected_article_description, line_ocrs)))
         products = []  # TODO: Run DB Query
 
         return json.dumps([product.__dict__ for product in products])
