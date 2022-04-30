@@ -7,4 +7,4 @@ ENV FLASK_APP=app.py
 RUN pip install gunicorn flask
 EXPOSE 8080
 ENTRYPOINT [ "gunicorn" ]
-CMD [ "--bind", "0.0.0.0:8080", "app:app"]
+CMD [ "--bind", "0.0.0.0:8080", "--timeout", "120", "app:app"]
