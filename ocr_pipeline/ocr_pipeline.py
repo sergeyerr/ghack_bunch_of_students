@@ -52,7 +52,7 @@ class LineOCRResult:
     def within_pixel_margin(left, right, margin):
         return left - margin <= right <= left + margin
 
-    def group_ocr_results(ocr_results: List[OCRResult], img_height: int, line_diff_percentage: float = 0.025):
+    def group_ocr_results(ocr_results: List[OCRResult], img_height: int, line_diff_percentage: float = 0.02):
         y_groups = []
         margin = img_height * line_diff_percentage
 
@@ -101,7 +101,7 @@ def detect_text(path):
     text_iter = iter(texts)
     full = next(text_iter)
     full = OCRResult(full.description, full.bounding_poly)
-    y = full.bounding_box.boundary.xy[0]
+    y = full.bounding_box.boundary.xy[1]
     full_height = max(y) - min(y)
 
     ocr_results = []
@@ -120,4 +120,4 @@ def detect_text(path):
                 response.error.message))
 
 if __name__ == '__main__':
-    detect_text('./ocr_test_image.jpg')
+    detect_text('/home/simon/dev/ghack_bunch_of_students/ocr_pipeline/ocr_test_image.jpg')
