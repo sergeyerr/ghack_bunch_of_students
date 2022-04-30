@@ -136,14 +136,19 @@ function uploadFile(file) {
        processData: false,
        contentType: false,
        success: function(response) {
+           console.dir(response)
            for (let line of response){
                var tr = document.createElement("tr")
                var td1 = document.createElement("td")
                var td2 = document.createElement("td")
                var td3 = document.createElement("td")
-               td1.innerHTML = line.line
-               td2.innerHTML = line.top_product_name
-               td2.innerHtml = line.top_product_total
+               td1.innerHTML = line["line"]
+               td2.innerHTML = line["top_product_name"]
+               td2.innerHtml = line["top_product_total"]
+               dataBody.appendChild(tr)
+               tr.appendChild(td1)
+               tr.appendChild(td2)
+               tr.appendChild(td3)
            }
            console.dir(response)
        },

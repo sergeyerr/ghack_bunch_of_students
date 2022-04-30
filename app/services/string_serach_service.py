@@ -10,7 +10,6 @@ class StringSearchService:
         client = bigquery.Client(location='europe-west6')
 
         q_res = client.query('SELECT * FROM products.products').result()
-        return next(q_res)
         table_names = []
         products = {}
         for row in q_res:
