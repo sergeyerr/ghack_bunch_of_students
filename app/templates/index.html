@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Image upload demo</title>
-    <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='js/client.js') }}">
+    <link rel="stylesheet" href= "{{ url_for('static',filename='styles/style.css') }}">
 </head>
 
 <body class="container">
     <h1>Image upload demo</h1>
 
-    <form id="theImageForm">
+    <form action="/" id="theImageForm" method="POST">
         <label for="theImageField" id="theImageContainer">
-            <input type="file" id="theImageField" accept="image/png, image/jpeg">
+            <input type="file" id="theImageField" name="file" accept="image/png, image/jpeg">
             Click here to upload or <b>drag-and-drop</b> an image...
         </label>
         <p id="errorMessage" class="hide"></p>
