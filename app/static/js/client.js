@@ -121,6 +121,29 @@ function handleUploadedFile(file) {
     var reader = new FileReader();
     reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
     reader.readAsDataURL(file);
+    uploadFile()
+}
+
+function uploadFile() {
+    var blobFile = $('#filechooser').files[0];
+    var formData = new FormData();
+    formData.append("fileToUpload", blobFile);
+
+    $.ajax({
+       url: "/",
+       type: "POST",
+       data: formData,
+       processData: false,
+       contentType: false,
+       success: function(response) {
+           console.dir(response)
+       },
+       error: function(jqXHR, textStatus, errorMessage) {
+           console.log(errorMessage);
+           theErrorMessage.innerHTML = "Could not upload file to server";
+           theErrorMessage.classList.remove('hide');
+       }
+    });
 }
 
 function clearImage(e) {
