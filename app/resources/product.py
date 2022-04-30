@@ -19,7 +19,7 @@ class Product(Resource):
     def post(self):
         self.logger.info('Received an image, starting processing..')
         args = Product.parser.parse_args()
-        image_file = args['file']
+        image_file = args['file'].read()
 
         self.logger.info('Running OCR..')
         ocr_results = OCRService.get_ocr_results(image_file)
