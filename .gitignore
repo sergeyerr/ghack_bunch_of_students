@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# dev resources
+recipe-detector-b4791741606a.json
