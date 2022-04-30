@@ -121,13 +121,12 @@ function handleUploadedFile(file) {
     var reader = new FileReader();
     reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
     reader.readAsDataURL(file);
-    uploadFile()
+    uploadFile(file)
 }
 
-function uploadFile() {
-    var blobFile = $('#filechooser').files[0];
+function uploadFile(file) {
     var formData = new FormData();
-    formData.append("fileToUpload", blobFile);
+    formData.append("file", file);
 
     $.ajax({
        url: "/",
