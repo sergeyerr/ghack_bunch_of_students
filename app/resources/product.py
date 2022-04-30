@@ -2,7 +2,7 @@ import json
 from flask_restful import Resource, reqparse
 from flask import render_template, make_response
 import werkzeug
-from models import line_ocr_result
+from models import LineOCRResult
 from services import OCRService, StringSearchService
 
 class Product(Resource):
@@ -26,8 +26,10 @@ class Product(Resource):
         full = ocr_results[0]
         y = full.bounding_box.boundary.xy[1]
         full_height = max(y) - min(y)
-        line_ocrs = line_ocr_result.group_ocr_results(ocr_results[1:], full_height)
+        line_ocrs = LineOCRResult.group_ocr_results(ocr_results[1:], full_height)
         self.logger.info(f'Found items!')
+
+        return "success"
         
         for line in line_ocrs:
             top5_articles = StringSearchService.get_most_likely_articles(line.description)
