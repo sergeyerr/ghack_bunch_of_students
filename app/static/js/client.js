@@ -5,6 +5,7 @@ var theErrorMessage = document.querySelector('#errorMessage');
 var theSuccessMessage = document.querySelector('#successMessage');
 var theClearImageLink = document.querySelector('#clearImage');
 var imageLabel = document.querySelector('#imageLabel')
+var dataBody = document.querySelector('#dataBody')
 
 var fileName = "";
 
@@ -135,6 +136,15 @@ function uploadFile(file) {
        processData: false,
        contentType: false,
        success: function(response) {
+           for (let line of response){
+               var tr = document.createElement("tr")
+               var td1 = document.createElement("td")
+               var td2 = document.createElement("td")
+               var td3 = document.createElement("td")
+               td1.innerHTML = line.line
+               td2.innerHTML = line.top_product_name
+               td2.innerHtml = line.top_product_total
+           }
            console.dir(response)
        },
        error: function(jqXHR, textStatus, errorMessage) {
