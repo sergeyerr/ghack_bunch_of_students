@@ -13,9 +13,9 @@
 <body class="container">
     <h1>Image upload demo</h1>
 
-    <form id="theImageForm">
+    <form action="/" id="theImageForm" method="POST">
         <label for="theImageField" id="theImageContainer">
-            <input type="file" id="theImageField" accept="image/png, image/jpeg">
+            <input type="file" id="theImageField" name="file" accept="image/png, image/jpeg">
             Click here to upload or <b>drag-and-drop</b> an image...
         </label>
         <p id="errorMessage" class="hide"></p>

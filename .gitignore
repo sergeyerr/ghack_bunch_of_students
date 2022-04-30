@@ -130,3 +130,5 @@ dmypy.json
 .pyre/
 
 front_tests/.idea/
+
+.idea
