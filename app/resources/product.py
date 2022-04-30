@@ -34,4 +34,4 @@ class Product(Resource):
         for line, top5 in zip(line_ocrs, top5_articles):
             results.append((line.full_description, top5))
 
-        return json.dumps([{"line": r[0], "top_products": {p[1]: p[0] for p in r[1]}} for r in results])
+        return json.dumps([{"line": r[0], "top_product_name": r[1][0].name, "top_product_total": r[1][0].total} for r in results])
