@@ -8,3 +8,6 @@ Jinja2==3.1.2
 MarkupSafe==2.1.1
 Werkzeug==2.1.2
 zipp==3.8.0
+google-cloud-vision==2.7.2
+shapely==1.8.1
+levenshtein==0.18.1 
