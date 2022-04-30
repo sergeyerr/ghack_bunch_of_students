@@ -3,7 +3,7 @@ from typing import List
 import shapely.geometry as geo
 import re
 
-from app.models.ocr_result import OCRResult
+from .ocr_result import OCRResult
 
 class LineOCRResult:
     full_description: List[str]

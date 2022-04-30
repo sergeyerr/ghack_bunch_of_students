@@ -2,8 +2,8 @@ import json
 from flask_restful import Resource, reqparse
 from flask import render_template, make_response
 import werkzeug
-from app.models import line_ocr_result, ocr_result
-from app.services import OCRService, StringSearchService
+from models import line_ocr_result, ocr_result
+from services import OCRService, StringSearchService
 from models import ProductModel
 
 

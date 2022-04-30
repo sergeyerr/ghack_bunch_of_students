@@ -1,5 +1,5 @@
 from google.cloud import vision
-from app.models import OCRResult
+from models import OCRResult
 
 class OCRService:
     def get_ocr_results(image):
